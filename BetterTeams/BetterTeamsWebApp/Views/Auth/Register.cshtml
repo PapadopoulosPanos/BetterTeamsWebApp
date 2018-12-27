@@ -1,0 +1,234 @@
+﻿@model BetterTeamsWebApp.Models.ViewModels.RegisterVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign Up</title>
+    <!-- plugins:css -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/www/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/www/vendors/css/vendor.bundle.base.css">
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+
+    <link rel="stylesheet" href="~/www/css/style.css">
+    <link rel="stylesheet" href="~/www/css/RegisterBackground.css" />
+
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/www/images/favicon.png" />
+</head>
+<body>
+
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div id="fixedBack" class="content-wrapper d-flex align-items-center auth">
+                <div id="back" class="row w-100">
+                    <div id="formback" class="col-lg-4 mx-auto">
+                        <div id="form" class="auth-form-light text-left p-5">
+                            <div id="BTlogo" class="brand-logo">
+
+                                <img src="~/www/images/BetterTeamsLogo3.jpg" />
+
+                            </div>
+                            <h4>New here?</h4>
+                            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+
+                            <form method="post" action="@Url.Action("Register","Auth")" class="pt-3">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                <div id="Email" class="form-group" data-toggle="popover" data-trigger="focus" data-content="Your email address. Example: myemail@mail.com" data-animation="true">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                <div class="form-group">
+
+                                    <div id="Name" class="form-group" data-toggle="popover" data-trigger="focus" data-content="Your First name">
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+
+                                    <div id="Surname" class="form-group" data-toggle="popover" data-trigger="focus" data-content="Your Last name">
+                                        @Html.TextBoxFor(model => model.Surname, new { @class = "form-control", placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(model => model.Surname)
+                                    </div>
+
+                                    <div id="Username" class="form-group" data-toggle="popover" data-trigger="focus" data-content="The Username you will use when you Login">
+                                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username" })
+                                        @Html.ValidationMessageFor(model => model.Username)
+                                    </div>
+                                </div>
+
+
+                                <div id="Password" class="form-group" data-toggle="popover" data-trigger="focus" data-content="The Password you will use to Login">
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+
+                                <div id="ConfirmPassword" class="form-group" data-toggle="popover" data-trigger="focus" data-content="Please repeat the Password, for confirmation">
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                </div>
+
+                                <div id="DateOfBirth" class="form-group" data-toggle="popover" data-trigger="focus" data-content="Your date of birth">
+                                    @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control datepicker", id = "BirthDate", placeholder = "Date of Birth" })
+                                    @Html.ValidationMessageFor(model => model.DateOfBirth)
+                                </div>
+                                <div class="mb-4">
+                                 
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN UP</button>
+                                </div>
+                                <div class="mt-3">
+                                    Already have an account? <a class="text-primary font-weight-medium " href="@Url.Action("Login", "Auth")"> <strong>Login</strong></a>
+                                </div>
+
+                                <div class="btn-group mt-5 mb-1 form-inline d-flex font-weight-light">
+                                
+                                    <a data-toggle="modal"  data-target="#contactModal" href="#myModal" id="myBtn" class="btn btn-inverse-light btn-fw"><strong>Contact Us</strong></a>
+                                    <a href="@Url.Action("About","Home")" class="btn btn-inverse-light btn-fw"><strong>About Us</strong></a>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- Trigger/Open The Modal -->
+        @*<div class="form-control">
+            <button id="myBtn" class="btn-gradient-primary btn-rounded btn-fw">Contact Us</button>
+        </div>*@
+        <!-- Button trigger modal -->
+        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">
+            Launch demo modal
+        </button>*@
+
+        <!-- Modal -->
+        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="ContactUs" aria-hidden="true">
+            <div class="modal-dialog modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalCenterTitle">Send Us a Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-content ">
+                            <form id="contactForm " class="contact-form">
+
+                                <div class="form-group row">
+                                    <label for="Email" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="email" name="Email" placeholder="Email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="Message" class="col-sm-3 col-form-label">Message</label>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" id="message" name="Message" rows="5" placeholder="Your message..."></textarea>
+                                    </div>
+                                </div>
+
+                                <button id="contact-form-submit" type="submit" class="btn btn-gradient-primary btn-success" data-dismiss="modal">Submit</button>
+                                <button class="btn btn-gradient-primary" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/www/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/www/vendors/js/vendor.bundle.addons.js"></script>
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="https://unpkg.com/tooltip.js"></script>
+    <script src="~/www/vendors/js/off-canvas.js"></script>
+    <script src="~/www/vendors/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1902:2002",
+                value: Selection
+            });
+        });
+        $(function () {
+            $("#Email, #Name, #Surname, #Username, #Password, #ConfirmPassword, #DateOfBirth").popover({
+                trigger: 'hover'
+            });
+        });
+
+
+    </script>
+
+    <script>
+
+    </script>
+    <script src="~/www/js/off-canvas.js"></script>
+    <script src="~/www/js/misc.js"></script>
+    <script>
+        $('#myBtn').click(function (e) {
+            e.preventDefault();
+            $('#contactModal').modal();
+        });
+        $(function () {
+            $('#contact-form-submit').on('click', function (e) {
+                e.preventDefault();
+
+                ContactMessage = new Object();
+                ContactMessage.SenderEmail = $('#Email').val();
+                ContactMessage.Text = $('#message').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/ContactUs",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(ContactMessage),
+                    success: function () {
+
+                        alert('Thank you for contacting us!');
+
+                    },
+                    error: function (request, message, error) {
+                        console.log(request);
+                        console.log(message);
+                        console.log(error);
+                        alert('Error, please try again.');
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+
+    <!-- endinject -->
+</body>
+</html>
